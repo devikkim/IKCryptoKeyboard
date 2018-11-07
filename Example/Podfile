@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'IKCryptoKeyboard_Example' do
+  pod 'IKCryptoKeyboard', :path => '../'
+
+  target 'IKCryptoKeyboard_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase' , '~> 2.1.4'
+  end
+end
