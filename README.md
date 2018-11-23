@@ -149,15 +149,7 @@ public struct IKCryptoKeyBoardConfigure {
 
   public var color = Color()
   public var cipher = IKCipher()
-  
-  public var numberLineBlankPositons = [Int]()
-  public var firstLineBlankPositons = [Int]()
-  public var secondLineBlankPositons = [Int]()
-  public var thirdLineBlankPositons = [Int]()
-  
-  public init(){
-    
-  }
+  ...
 }
 
 ```
