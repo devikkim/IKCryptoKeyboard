@@ -24,13 +24,11 @@ public struct IKCryptoKeyBoardConfigure {
   }
   
   public struct Qwerty {
-    public var numberLine: String
     public var firstLine: String
     public var secondLine: String
     public var thirdLine : String
     
-    public init(numberLine: String, firstLine: String, secondLine: String, thirdLine: String){
-      self.numberLine = numberLine
+    public init(firstLine: String, secondLine: String, thirdLine: String){
       self.firstLine = firstLine
       self.secondLine = secondLine
       self.thirdLine = thirdLine
@@ -61,23 +59,19 @@ public struct IKCryptoKeyBoardConfigure {
   
   public var specialsQwerty = "!@#$%^&*()-=\\`_+|~[];',./{}:\"<>?"
   
-  public var mainQwerty = Qwerty(numberLine: "1234567890",
-                                 firstLine: "qwertyuiop",
+  public var mainQwerty = Qwerty(firstLine: "qwertyuiop",
                                  secondLine: "asdfghjkl",
                                  thirdLine: "zxcvbnm")
   
-  public var subQwerty = Qwerty(numberLine: "1234567890",
-                                firstLine: "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ",
+  public var subQwerty = Qwerty(firstLine: "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ",
                                 secondLine: "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ",
                                 thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
   
-  public var shiftMainQwerty = Qwerty(numberLine: "1234567890",
-                                      firstLine: "QWERTYUIOP",
+  public var shiftMainQwerty = Qwerty(firstLine: "QWERTYUIOP",
                                       secondLine: "ASDFGHJKL",
                                       thirdLine: "ZXCVBNM")
   
-  public var shiftSubQwerty = Qwerty(numberLine: "1234567890",
-                                     firstLine: "ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ",
+  public var shiftSubQwerty = Qwerty(firstLine: "ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ",
                                      secondLine: "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ",
                                      thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
 
