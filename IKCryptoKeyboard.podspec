@@ -8,9 +8,10 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IKCryptoKeyboard'
-  s.version          = '0.2.0'
+  s.version          = '1.0.0'
   s.summary          = 'this is crypto keyboard view controller.'
-
+  
+  s.dependency 'CryptoSwift'
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.

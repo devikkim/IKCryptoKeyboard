@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CryptoSwift
 
 public struct IKCryptoKeyBoardConfigure {
   
@@ -37,9 +38,23 @@ public struct IKCryptoKeyBoardConfigure {
     
   }
   
-  public var isUseSubKeys = true
+  public enum IKCipherTypes {
+    case aes
+    case custom
+  }
   
+  public struct IKCipher {
+    public var key: Array<UInt8> = "aaaaaaaaaaaaaaaa".bytes
+    public var iv: Array<UInt8> = "aaaaaaaaaaaaaaaa".bytes
+    public var type: IKCipherTypes = .aes
+    
+    public init (){
+    }
+  }
+  
+  public var isUseSubKeys = true
   public var titleName = "CryptoKeyBoard"
+  public var informationText = "This is Crypto Keyboard ViewController"
   public var cancelButtonName = "Close"
   
   public var numberQwerty = "1234567890"
@@ -72,11 +87,14 @@ public struct IKCryptoKeyBoardConfigure {
   public lazy var thirdLineCount = self.mainQwerty.thirdLine.count
 
   public var color = Color()
+  public var cipher = IKCipher()
   
   public var numberLineBlankPositons = [Int]()
   public var firstLineBlankPositons = [Int]()
   public var secondLineBlankPositons = [Int]()
   public var thirdLineBlankPositons = [Int]()
+  
+  
   
   public init(){
     
@@ -84,7 +102,34 @@ public struct IKCryptoKeyBoardConfigure {
 }
 
 public protocol IKCryptoKeyBoardViewControllerDelegate: class {
-  func encrypted(plain: String, encryptedData: String)
+  func doEncrypt(plain: String) -> Array<UInt8>
+  func doDecrypt(encrypted: Array<UInt8>) -> Array<UInt8>
+  func didEncrypted(plain: String, encryptedData: Array<UInt8>)
+  func didDecrypted(encryptedData: Array<UInt8>)
+}
+
+extension IKCryptoKeyBoardViewControllerDelegate {
+  public func doEncrypt(plain: String) -> Array<UInt8> {
+    /**
+     * if you selected configure.cipher.type.custom, then you have to describe encrypt algorithm
+     */
+    return [UInt8]()
+  }
+  
+  public func doDecrypt(encrypted: Array<UInt8>) -> Array<UInt8> {
+    /**
+     * this function is debug mode.
+     *
+     * if you selected configure.cipher.type.custom, then you have to describe decrypt algorithm
+     */
+    return [UInt8]()
+  }
+  
+  public func didDecrypted(encryptedData: Array<UInt8>) {
+    /**
+     * this function is debug mode.
+     */
+  }
 }
 
 public class IKCryptoKeyBoardViewController: UIViewController {
@@ -92,7 +137,9 @@ public class IKCryptoKeyBoardViewController: UIViewController {
   
   @IBOutlet fileprivate weak var cryptoKeyboardView: IKCryptoKeyboardView!
   
-  @IBOutlet fileprivate weak var inputText: UITextField!
+  @IBOutlet fileprivate weak var passwordTextField: UITextField!
+  
+  @IBOutlet fileprivate weak var informationLabel: UILabel!
   
   public var configure = IKCryptoKeyBoardConfigure()
   
@@ -120,7 +167,7 @@ public class IKCryptoKeyBoardViewController: UIViewController {
     self.navigationBar.topItem?.leftBarButtonItem = self.cancelButton
     
     setCryptoKeyboard()
-    
+    self.informationLabel.text = configure.informationText
   }
   
   @objc func cancelAction () {
@@ -165,22 +212,41 @@ extension IKCryptoKeyBoardViewController: UITextFieldDelegate {
   }
 }
 
-
 extension IKCryptoKeyBoardViewController: IKCryptoKeyboardViewDelegate {
   func touched(keys:String) {
-    self.inputText.text = keys
+    self.passwordTextField.text = keys
   }
   
-  func comfirmTouch(encrypted:String) {
-    if let plain = self.inputText.text {
-      
-      var data = ""
-      for _ in 0..<plain.count{
-        data += "a"
+  func comfirmTouch(plain: String) {
+    do {
+      switch configure.cipher.type {
+      case .aes:
+        let encrypted = try AES(key: configure.cipher.key, blockMode: CBC(iv: configure.cipher.iv), padding: .pkcs7)
+          .encrypt(plain.bytes)
+        
+        let replacePlain = plain.map{ _ in "a" }.joined()
+        
+        self.delegate?.didEncrypted(plain: replacePlain, encryptedData: encrypted)
+        
+        let decrypted = try AES(key: configure.cipher.key, blockMode: CBC(iv: configure.cipher.key), padding: .pkcs7).decrypt(encrypted)
+        self.delegate?.didDecrypted(encryptedData: decrypted)
+        
+        self.dismiss(animated: true)
+
+      case .custom:
+        if let encrypted = self.delegate?.doEncrypt(plain: plain){
+          let replacePlain = plain.map{ _ in "a" }.joined()
+          
+          self.delegate?.didEncrypted(plain: replacePlain, encryptedData: encrypted)
+          
+          if let decrypted = self.delegate?.doDecrypt(encrypted: encrypted) {
+            self.delegate?.didDecrypted(encryptedData: decrypted)
+          }
+          
+          self.dismiss(animated: true)
+        }
       }
       
-      self.delegate?.encrypted(plain: data, encryptedData: encrypted)
-      self.dismiss(animated: true)
-    }
+    } catch { }
   }
 }

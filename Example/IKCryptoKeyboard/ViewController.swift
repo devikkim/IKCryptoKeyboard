@@ -32,29 +32,22 @@ class ViewController: UIViewController, UITextFieldDelegate{
     let vc = IKCryptoKeyBoardViewController()
     vc.delegate = self
     
-    var configure = IKCryptoKeyBoardConfigure()
-
-    configure.isUseSubKeys = false
-    configure.numberQwerty = "1234567890"
-    configure.mainQwerty.firstLine = "яшертыуиопющэ"
-    configure.mainQwerty.secondLine = "асдфгчйкльж"
-    configure.mainQwerty.thirdLine = "зхцвбнм"
-
-    configure.color.defaultButton = UIColor.white
-    configure.color.touchedButton = UIColor.black
-    configure.color.keyboardBackground = UIColor.white
-    configure.color.functionKeyTextColor = UIColor.red
-    configure.color.keyTextColor = UIColor.gray
-    vc.configure = configure
-    
     self.present(vc, animated: true)
   }
 }
 
 
 extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
-  func encrypted(plain: String, encryptedData: String) {
+  func didEncrypted(plain: String, encryptedData: Array<UInt8>) {
     self.pwTextField.text = plain
-    self.encryptedTextField.text = encryptedData
+    self.encryptedTextField.text = encryptedData.toBase64()!
+  }
+  
+  func didDecrypted(encryptedData: Array<UInt8>) {
+    if let decrypted = String(bytes: encryptedData, encoding: .utf8){
+      self.decryptedTextField.text = decrypted
+    } else {
+      self.decryptedTextField.text = encryptedData.toHexString()
+    }
   }
 }

@@ -22,22 +22,22 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="8gz-xS-fnt">
-                                <rect key="frame" x="116" y="256.5" width="143" height="154"/>
+                                <rect key="frame" x="36" y="256.5" width="303" height="154"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5P-5J-FXQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="143" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Encrypted Data" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UzN-z2-f7W">
-                                        <rect key="frame" x="0.0" y="62" width="143" height="30"/>
+                                        <rect key="frame" x="0.0" y="62" width="303" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Decrypted Data" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uj5-Yg-em0">
-                                        <rect key="frame" x="0.0" y="124" width="143" height="30"/>
+                                        <rect key="frame" x="0.0" y="124" width="303" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -48,9 +48,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8gz-xS-fnt" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="4sF-OW-rka"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8gz-xS-fnt" secondAttribute="trailing" constant="100" id="9Pt-wm-3Jj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8gz-xS-fnt" secondAttribute="trailing" constant="20" id="9Pt-wm-3Jj"/>
                             <constraint firstItem="8gz-xS-fnt" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="oM7-BN-WUO"/>
-                            <constraint firstItem="8gz-xS-fnt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="100" id="x8b-at-f2Y"/>
+                            <constraint firstItem="8gz-xS-fnt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="x8b-at-f2Y"/>
                         </constraints>
                     </view>
                     <connections>

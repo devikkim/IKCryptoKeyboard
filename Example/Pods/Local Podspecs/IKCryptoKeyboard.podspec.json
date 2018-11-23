@@ -1,8 +1,13 @@
 {
   "name": "IKCryptoKeyboard",
-  "version": "0.1.0",
-  "summary": "A short description of IKCryptoKeyboard.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.2.0",
+  "summary": "this is crypto keyboard view controller.",
+  "dependencies": {
+    "CryptoSwift": [
+
+    ]
+  },
+  "description": "this is crypto keyboard view controller,\npresent modal view controller included crypto keyboard.",
   "homepage": "https://github.com/leibniz55/IKCryptoKeyboard",
   "license": {
     "type": "MIT",
@@ -13,10 +18,11 @@
   },
   "source": {
     "git": "https://github.com/leibniz55/IKCryptoKeyboard.git",
-    "tag": "0.1.0"
+    "tag": "0.2.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
-  "source_files": "IKCryptoKeyboard/Classes/**/*"
+  "source_files": "IKCryptoKeyboard/Classes/**/*",
+  "swift_version": "3.0"
 }

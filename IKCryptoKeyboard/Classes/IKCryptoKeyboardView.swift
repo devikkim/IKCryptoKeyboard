@@ -9,7 +9,7 @@ import UIKit
 
 protocol IKCryptoKeyboardViewDelegate : class {
   func touched(keys: String)
-  func comfirmTouch(encrypted:String)
+  func comfirmTouch(plain: String)
 }
 
 class IKCryptoKeyboardView: UIView{
@@ -182,7 +182,7 @@ extension IKCryptoKeyboardView {
   }
   
   @IBAction func comfirmTouch(sender:UIButton){
-    delegate?.comfirmTouch(encrypted: "")
+    delegate?.comfirmTouch(plain: userInputText)
   }
   
 }
