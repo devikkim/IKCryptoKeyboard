@@ -61,9 +61,9 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
 
 ## Customize
 
-### Description ( The Rules )
+### The Rules.
 
-If you keep the rules, you can use all of the language keyboard. 
+If you keep the rules, you can use all of the languages keyboard. 
 
 <img src="/Screenshots/IKCryptoKeyboard_Description.png" />
 
@@ -163,7 +163,6 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
   
   // for debug
   func doDecrypt(encrypted: Array<UInt8>) -> Array<UInt8> {
-  
     // describe decrypt function
   }
 }
