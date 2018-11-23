@@ -65,6 +65,7 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
 
 ## Customize
 
+### Description
 <img src="/Screenshots/IKCryptoKeyboard_Description.png" />
 
 
@@ -156,6 +157,29 @@ public struct IKCryptoKeyBoardConfigure {
   
   public init(){
     
+  }
+}
+
+```
+
+### Use Custom Cipher
+if you want custom cipher encrypt & decrypt,
+
+``` swift
+let vc = IKCryptoKeyBoardViewController()
+var configure = IKCryptoKeyBoardConfigure()
+vc.configure.cipher.type = .custom // default is aes
+vc.configure = configure
+
+extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
+  func doEncrypt(plain: String) -> Array<UInt8> {
+    // describe encrypt function
+  }
+  
+  // for debug
+  func doDecrypt(encrypted: Array<UInt8>) -> Array<UInt8> {
+  
+    // describe decrypt function
   }
 }
 
