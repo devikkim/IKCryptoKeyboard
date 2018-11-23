@@ -46,17 +46,13 @@ extension ViewController: UITextFieldDelegate{
 extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
   // get encrypted data from IKCryptoKeyBoardViewController
   func didEncrypted(plain: String, encryptedData: Array<UInt8>) {
-    self.pwTextField.text = plain
-    self.encryptedTextField.text = encryptedData.toBase64()!
+    // `plain` is replaced password as "aaaaa..."
+    // `encryptedData` is encrypted password
   }
   
   // for debug
-  func didDecrypted(encryptedData: Array<UInt8>) {
-    if let decrypted = String(bytes: encryptedData, encoding: .utf8){
-      self.decryptedTextField.text = decrypted
-    } else {
-      self.decryptedTextField.text = encryptedData.toHexString()
-    }
+  func didDecrypted(decryptedData: Array<UInt8>) {
+  // `decryptedData` is password
   }
 }
 
@@ -65,7 +61,11 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
 
 ## Customize
 
-<img src="/Screenshots/Keyboard.png" />
+### Description ( The Rules )
+
+If you keep the rules, you can use all of the language keyboard. 
+
+<img src="/Screenshots/IKCryptoKeyboard_Description.png" />
 
 
 ``` swift
@@ -140,22 +140,31 @@ public struct IKCryptoKeyBoardConfigure {
   public var shiftSubQwerty = Qwerty(firstLine: "ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ",
                                      secondLine: "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ",
                                      thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
-
-  public lazy var numberLineCount = self.numberQwerty.count
-  public lazy var firstLineCount = self.mainQwerty.firstLine.count
-  public lazy var secondLineCount = self.mainQwerty.secondLine.count
-  public lazy var thirdLineCount = self.mainQwerty.thirdLine.count
-
   public var color = Color()
   public var cipher = IKCipher()
+  ...
+}
+
+```
+
+### Use Custom Cipher
+if you want custom cipher encrypt & decrypt,
+
+``` swift
+let vc = IKCryptoKeyBoardViewController()
+var configure = IKCryptoKeyBoardConfigure()
+vc.configure.cipher.type = .custom // default is aes
+vc.configure = configure
+
+extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
+  func doEncrypt(plain: String) -> Array<UInt8> {
+    // describe encrypt function
+  }
   
-  public var numberLineBlankPositons = [Int]()
-  public var firstLineBlankPositons = [Int]()
-  public var secondLineBlankPositons = [Int]()
-  public var thirdLineBlankPositons = [Int]()
+  // for debug
+  func doDecrypt(encrypted: Array<UInt8>) -> Array<UInt8> {
   
-  public init(){
-    
+    // describe decrypt function
   }
 }
 
