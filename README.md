@@ -24,6 +24,42 @@ it, simply add the following line to your Podfile:
 pod 'IKCryptoKeyboard'
 ```
 
+## How to use
+
+``` swift
+
+extension ViewController: UITextFieldDelegate{
+
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    _ = textField.resignFirstResponder()
+    
+    let vc = IKCryptoKeyBoardViewController()
+    vc.delegate = self
+    
+    self.present(vc, animated: true)
+  }
+}
+
+extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
+  // get encrypted data from IKCryptoKeyBoardViewController
+  func didEncrypted(plain: String, encryptedData: Array<UInt8>) {
+    self.pwTextField.text = plain
+    self.encryptedTextField.text = encryptedData.toBase64()!
+  }
+  
+  // for debug
+  func didDecrypted(encryptedData: Array<UInt8>) {
+    if let decrypted = String(bytes: encryptedData, encoding: .utf8){
+      self.decryptedTextField.text = decrypted
+    } else {
+      self.decryptedTextField.text = encryptedData.toHexString()
+    }
+  }
+}
+
+
+```
+
 ## Author
 
 leibniz55, leibniz55@naver.com
