@@ -65,7 +65,7 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
 
 ## Customize
 
-<img src="/Screenshots/Keyboard.png" />
+<img src="/Screenshots/IKCryptoKeyboard_Description.png" />
 
 
 ``` swift
