@@ -141,12 +141,6 @@ public struct IKCryptoKeyBoardConfigure {
   public var shiftSubQwerty = Qwerty(firstLine: "ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ",
                                      secondLine: "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ",
                                      thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
-
-  public lazy var numberLineCount = self.numberQwerty.count
-  public lazy var firstLineCount = self.mainQwerty.firstLine.count
-  public lazy var secondLineCount = self.mainQwerty.secondLine.count
-  public lazy var thirdLineCount = self.mainQwerty.thirdLine.count
-
   public var color = Color()
   public var cipher = IKCipher()
   ...
