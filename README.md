@@ -46,17 +46,13 @@ extension ViewController: UITextFieldDelegate{
 extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
   // get encrypted data from IKCryptoKeyBoardViewController
   func didEncrypted(plain: String, encryptedData: Array<UInt8>) {
-    self.pwTextField.text = plain
-    self.encryptedTextField.text = encryptedData.toBase64()!
+    // `plain` is replaced password as "aaaaa..."
+    // `encryptedData` is encrypted password
   }
   
   // for debug
-  func didDecrypted(encryptedData: Array<UInt8>) {
-    if let decrypted = String(bytes: encryptedData, encoding: .utf8){
-      self.decryptedTextField.text = decrypted
-    } else {
-      self.decryptedTextField.text = encryptedData.toHexString()
-    }
+  func didDecrypted(decryptedData: Array<UInt8>) {
+  // `decryptedData` is password
   }
 }
 
