@@ -91,13 +91,11 @@ public struct IKCryptoKeyBoardConfigure {
   }
   
   public struct Qwerty {
-    public var numberLine: String
     public var firstLine: String
     public var secondLine: String
     public var thirdLine : String
     
-    public init(numberLine: String, firstLine: String, secondLine: String, thirdLine: String){
-      self.numberLine = numberLine
+    public init(firstLine: String, secondLine: String, thirdLine: String){
       self.firstLine = firstLine
       self.secondLine = secondLine
       self.thirdLine = thirdLine
