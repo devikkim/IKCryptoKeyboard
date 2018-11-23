@@ -5,11 +5,18 @@
 [![License](https://img.shields.io/cocoapods/l/IKCryptoKeyboard.svg?style=flat)](https://cocoapods.org/pods/IKCryptoKeyboard)
 [![Platform](https://img.shields.io/cocoapods/p/IKCryptoKeyboard.svg?style=flat)](https://cocoapods.org/pods/IKCryptoKeyboard)
 
+## Demo
+### English/Korea Keyboard
+<img src="/Screenshots/IKCryptoKeyboard.gif" />
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+
+- Swift 4.0
+- ios 9.3
 
 ## Installation
 
@@ -18,6 +25,143 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'IKCryptoKeyboard'
+```
+
+## How to use
+
+``` swift
+
+extension ViewController: UITextFieldDelegate{
+
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    _ = textField.resignFirstResponder()
+    
+    let vc = IKCryptoKeyBoardViewController()
+    vc.delegate = self
+    
+    self.present(vc, animated: true)
+  }
+}
+
+extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
+  // get encrypted data from IKCryptoKeyBoardViewController
+  func didEncrypted(plain: String, encryptedData: Array<UInt8>) {
+    self.pwTextField.text = plain
+    self.encryptedTextField.text = encryptedData.toBase64()!
+  }
+  
+  // for debug
+  func didDecrypted(encryptedData: Array<UInt8>) {
+    if let decrypted = String(bytes: encryptedData, encoding: .utf8){
+      self.decryptedTextField.text = decrypted
+    } else {
+      self.decryptedTextField.text = encryptedData.toHexString()
+    }
+  }
+}
+
+
+```
+
+## Customize
+``` swift
+
+let vc = IKCryptoKeyBoardViewController()
+var configure = IKCryptoKeyBoardConfigure()
+vc.configure = configure
+
+
+public struct IKCryptoKeyBoardConfigure {
+  
+  public struct Color {
+    public var touchedButton = UIColor(red:0.20, green:0.39, blue:0.73, alpha:1.0)
+    public var defaultButton = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    public var keyboardBackground = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    
+    public var functionKeyTextColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
+    public var keyTextColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
+    
+    public init () {
+      
+    }
+  }
+  
+  public struct Qwerty {
+    public var numberLine: String
+    public var firstLine: String
+    public var secondLine: String
+    public var thirdLine : String
+    
+    public init(numberLine: String, firstLine: String, secondLine: String, thirdLine: String){
+      self.numberLine = numberLine
+      self.firstLine = firstLine
+      self.secondLine = secondLine
+      self.thirdLine = thirdLine
+    }
+    
+  }
+  
+  public enum IKCipherTypes {
+    case aes
+    case custom
+  }
+  
+  public struct IKCipher {
+    public var key: Array<UInt8> = "aaaaaaaaaaaaaaaa".bytes
+    public var iv: Array<UInt8> = "aaaaaaaaaaaaaaaa".bytes
+    public var type: IKCipherTypes = .aes
+    
+    public init (){
+    }
+  }
+  
+  public var isUseSubKeys = true
+  public var titleName = "CryptoKeyBoard"
+  public var informationText = "This is Crypto Keyboard ViewController"
+  public var cancelButtonName = "Close"
+  
+  public var numberQwerty = "1234567890"
+  
+  public var specialsQwerty = "!@#$%^&*()-=\\`_+|~[];',./{}:\"<>?"
+  
+  public var mainQwerty = Qwerty(numberLine: "1234567890",
+                                 firstLine: "qwertyuiop",
+                                 secondLine: "asdfghjkl",
+                                 thirdLine: "zxcvbnm")
+  
+  public var subQwerty = Qwerty(numberLine: "1234567890",
+                                firstLine: "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ",
+                                secondLine: "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ",
+                                thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
+  
+  public var shiftMainQwerty = Qwerty(numberLine: "1234567890",
+                                      firstLine: "QWERTYUIOP",
+                                      secondLine: "ASDFGHJKL",
+                                      thirdLine: "ZXCVBNM")
+  
+  public var shiftSubQwerty = Qwerty(numberLine: "1234567890",
+                                     firstLine: "ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ",
+                                     secondLine: "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ",
+                                     thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
+
+  public lazy var numberLineCount = self.numberQwerty.count
+  public lazy var firstLineCount = self.mainQwerty.firstLine.count
+  public lazy var secondLineCount = self.mainQwerty.secondLine.count
+  public lazy var thirdLineCount = self.mainQwerty.thirdLine.count
+
+  public var color = Color()
+  public var cipher = IKCipher()
+  
+  public var numberLineBlankPositons = [Int]()
+  public var firstLineBlankPositons = [Int]()
+  public var secondLineBlankPositons = [Int]()
+  public var thirdLineBlankPositons = [Int]()
+  
+  public init(){
+    
+  }
+}
+
 ```
 
 ## Author
