@@ -99,7 +99,7 @@ public protocol IKCryptoKeyBoardViewControllerDelegate: class {
   func doEncrypt(plain: String) -> Array<UInt8>
   func doDecrypt(encrypted: Array<UInt8>) -> Array<UInt8>
   func didEncrypted(plain: String, encryptedData: Array<UInt8>)
-  func didDecrypted(encryptedData: Array<UInt8>)
+  func didDecrypted(decryptedData: Array<UInt8>)
 }
 
 extension IKCryptoKeyBoardViewControllerDelegate {
