@@ -65,7 +65,10 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
 
 ## Customize
 
-### Description
+### Description ( The Rules )
+
+If you keep the rules, you can use all of the language keyboard. 
+
 <img src="/Screenshots/IKCryptoKeyboard_Description.png" />
 
 
