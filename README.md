@@ -64,6 +64,10 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
 ```
 
 ## Customize
+
+<img src="/Screenshots/Keyboard.png" />
+
+
 ``` swift
 
 let vc = IKCryptoKeyBoardViewController()
@@ -121,26 +125,21 @@ public struct IKCryptoKeyBoardConfigure {
   public var cancelButtonName = "Close"
   
   public var numberQwerty = "1234567890"
-  
   public var specialsQwerty = "!@#$%^&*()-=\\`_+|~[];',./{}:\"<>?"
   
-  public var mainQwerty = Qwerty(numberLine: "1234567890",
-                                 firstLine: "qwertyuiop",
+  public var mainQwerty = Qwerty(firstLine: "qwertyuiop",
                                  secondLine: "asdfghjkl",
                                  thirdLine: "zxcvbnm")
   
-  public var subQwerty = Qwerty(numberLine: "1234567890",
-                                firstLine: "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ",
+  public var subQwerty = Qwerty(firstLine: "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ",
                                 secondLine: "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ",
                                 thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
   
-  public var shiftMainQwerty = Qwerty(numberLine: "1234567890",
-                                      firstLine: "QWERTYUIOP",
+  public var shiftMainQwerty = Qwerty(firstLine: "QWERTYUIOP",
                                       secondLine: "ASDFGHJKL",
                                       thirdLine: "ZXCVBNM")
   
-  public var shiftSubQwerty = Qwerty(numberLine: "1234567890",
-                                     firstLine: "ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ",
+  public var shiftSubQwerty = Qwerty(firstLine: "ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ",
                                      secondLine: "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ",
                                      thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
 
