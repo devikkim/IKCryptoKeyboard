@@ -5,6 +5,10 @@
 [![License](https://img.shields.io/cocoapods/l/IKCryptoKeyboard.svg?style=flat)](https://cocoapods.org/pods/IKCryptoKeyboard)
 [![Platform](https://img.shields.io/cocoapods/p/IKCryptoKeyboard.svg?style=flat)](https://cocoapods.org/pods/IKCryptoKeyboard)
 
+## Demo
+### English/Korea Keyboard
+<img src="/Screenshots/IKCryptoKeyboard.gif" />
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
