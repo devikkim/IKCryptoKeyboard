@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/IKCryptoKeyboard.svg?style=flat)](https://cocoapods.org/pods/IKCryptoKeyboard)
 
 ## Demo
-### English/Korea Keyboard
+### English/Korean Keyboard
 <img src="/Screenshots/IKCryptoKeyboard.gif" />
 
 ## Example
