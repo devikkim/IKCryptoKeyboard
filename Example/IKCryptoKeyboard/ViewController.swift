@@ -31,6 +31,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     let vc = IKCryptoKeyBoardViewController()
     vc.delegate = self
+
+    var configure = IKCryptoKeyBoardConfigure()
     
     self.present(vc, animated: true)
   }
