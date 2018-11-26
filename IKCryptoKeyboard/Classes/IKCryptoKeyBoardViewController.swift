@@ -119,7 +119,7 @@ extension IKCryptoKeyBoardViewControllerDelegate {
     return [UInt8]()
   }
   
-  public func didDecrypted(encryptedData: Array<UInt8>) {
+  public func didDecrypted(decryptedData: Array<UInt8>) {
     /**
      * this function is debug mode.
      */
@@ -223,7 +223,7 @@ extension IKCryptoKeyBoardViewController: IKCryptoKeyboardViewDelegate {
         self.delegate?.didEncrypted(plain: replacePlain, encryptedData: encrypted)
         
         let decrypted = try AES(key: configure.cipher.key, blockMode: CBC(iv: configure.cipher.key), padding: .pkcs7).decrypt(encrypted)
-        self.delegate?.didDecrypted(encryptedData: decrypted)
+        self.delegate?.didDecrypted(decryptedData: decrypted)
         
         self.dismiss(animated: true)
 
@@ -234,7 +234,7 @@ extension IKCryptoKeyBoardViewController: IKCryptoKeyboardViewDelegate {
           self.delegate?.didEncrypted(plain: replacePlain, encryptedData: encrypted)
           
           if let decrypted = self.delegate?.doDecrypt(encrypted: encrypted) {
-            self.delegate?.didDecrypted(encryptedData: decrypted)
+            self.delegate?.didDecrypted(decryptedData: decrypted)
           }
           
           self.dismiss(animated: true)
