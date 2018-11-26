@@ -81,12 +81,13 @@ vc.configure = configure
 public struct IKCryptoKeyBoardConfigure {
   
   public struct Color {
-    public var touchedButton = UIColor(red:0.20, green:0.39, blue:0.73, alpha:1.0)
-    public var defaultButton = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    public var touchedKey = UIColor(red:0.20, green:0.39, blue:0.73, alpha:1.0)
+    public var defaultKey = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    public var functionKey = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
     public var keyboardBackground = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
     
     public var functionKeyTextColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
-    public var keyTextColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
+    public var defaultKeyTextColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
     
     public init () {
       
@@ -126,6 +127,7 @@ public struct IKCryptoKeyBoardConfigure {
   public var cancelButtonName = "Close"
   
   public var numberQwerty = "1234567890"
+  
   public var specialsQwerty = "!@#$%^&*()-=\\`_+|~[];',./{}:\"<>?"
   
   public var mainQwerty = Qwerty(firstLine: "qwertyuiop",
@@ -143,12 +145,60 @@ public struct IKCryptoKeyBoardConfigure {
   public var shiftSubQwerty = Qwerty(firstLine: "ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ",
                                      secondLine: "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ",
                                      thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
-  public var color = Color()
-  public var cipher = IKCipher()
+
   ...
+  
+  public init(){
+    
+  }
 }
 
 ```
+
+### Custom Example
+- Deutsch Crypto Keyboard
+``` swift
+configure.isUseSubKeys = false
+    
+configure.informationText = "This is Deutsch Crypto Keyboard"
+configure.mainQwerty.firstLine = "qwertzuiopü"
+configure.mainQwerty.secondLine = "asdfghjklöä"
+configure.mainQwerty.thirdLine = "yxcvbnm"
+
+configure.shiftMainQwerty.firstLine = "QWERTZUIOPÜ"
+configure.shiftMainQwerty.secondLine = "ASDFGHJKLÖÄ"
+configure.shiftMainQwerty.thirdLine = "YXCVBNM"
+
+configure.color.defaultKey = .yellow
+configure.color.touchedKey = .gray
+configure.color.keyboardBackground = .black
+configure.color.functionKeyTextColor = .white
+configure.color.defaultKeyTextColor = .black
+configure.color.functionKey = .red
+```
+<img src="/Screenshots/Deutsch.png" />
+ 
+- Ressian Crypto Keyboard
+``` swift
+configure.isUseSubKeys = false
+configure.informationText = "This is Ressian Crypto Keyboard"
+configure.mainQwerty.firstLine = "йцукенгшщзх"
+configure.mainQwerty.secondLine = "фывапролджэ"
+configure.mainQwerty.thirdLine = "ячсмитьбю"
+
+configure.shiftMainQwerty.firstLine = "ЙЦУКЕНГШЩЗХ"
+configure.shiftMainQwerty.secondLine = "ФЫВАПРОЛДЖЭ"
+configure.shiftMainQwerty.thirdLine = "ЯЧСМИТЬБЮ"
+
+configure.color.defaultKey = .white
+configure.color.touchedKey = .gray
+configure.color.keyboardBackground = .blue
+configure.color.functionKeyTextColor = .black
+configure.color.defaultKeyTextColor = .black
+configure.color.functionKey = .red
+```
+<img src="/Screenshots/Ressian.png" />
+
 
 ### Use Custom Cipher
 if you want custom cipher encrypt & decrypt,
