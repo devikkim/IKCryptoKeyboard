@@ -67,14 +67,23 @@ class IKCryptoKeyboardView: UIView{
     
     self.comfirmButton.layer.cornerRadius = 5.0
     self.comfirmButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
+    self.comfirmButton.backgroundColor = configure.color.functionKey
+    
     self.backspaceButton.layer.cornerRadius = 5.0
     self.backspaceButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
+    self.backspaceButton.backgroundColor = configure.color.functionKey
+    
     self.spaceButton.layer.cornerRadius = 5.0
     self.spaceButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
+    self.spaceButton.backgroundColor = configure.color.functionKey
+    
     self.shiftButton.layer.cornerRadius = 5.0
     self.shiftButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
+    self.shiftButton.backgroundColor = configure.color.functionKey
+    
     self.specialButton.layer.cornerRadius = 5.0
     self.specialButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
+    self.specialButton.backgroundColor = configure.color.functionKey
   } 
 }
 
@@ -143,12 +152,12 @@ extension IKCryptoKeyboardView {
       self.setKeys(type: IKKeyboardTypes.main)
       self.isShift = false
       
-      shiftButton.backgroundColor = configure.color.defaultButton
+      shiftButton.backgroundColor = configure.color.functionKey
     } else {
       self.setKeys(type: IKKeyboardTypes.shift)
       self.isShift = true
       
-      shiftButton.backgroundColor = configure.color.touchedButton
+      shiftButton.backgroundColor = configure.color.touchedKey
     }
   }
   
@@ -156,13 +165,13 @@ extension IKCryptoKeyboardView {
     if self.isSpecial {
       self.setKeys(type: IKKeyboardTypes.main)
       self.isSpecial = false
-      specialButton.backgroundColor = configure.color.defaultButton
+      specialButton.backgroundColor = configure.color.functionKey
       
       self.shiftButton.isHidden = false
     } else {
       self.setKeys(type: IKKeyboardTypes.special)
       self.isSpecial = true
-      specialButton.backgroundColor = configure.color.touchedButton
+      specialButton.backgroundColor = configure.color.touchedKey
       
       self.shiftButton.isHidden = true
     }

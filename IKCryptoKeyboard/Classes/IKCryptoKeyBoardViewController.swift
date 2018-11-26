@@ -11,12 +11,13 @@ import CryptoSwift
 public struct IKCryptoKeyBoardConfigure {
   
   public struct Color {
-    public var touchedButton = UIColor(red:0.20, green:0.39, blue:0.73, alpha:1.0)
-    public var defaultButton = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    public var touchedKey = UIColor(red:0.20, green:0.39, blue:0.73, alpha:1.0)
+    public var defaultKey = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    public var functionKey = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
     public var keyboardBackground = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
     
     public var functionKeyTextColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
-    public var keyTextColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
+    public var defaultKeyTextColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
     
     public init () {
       

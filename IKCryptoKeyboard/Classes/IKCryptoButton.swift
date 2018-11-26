@@ -71,10 +71,10 @@ extension IKCryptoButton {
   }
   
   private func setColor(){
-    self.contentView.backgroundColor = configure.color.defaultButton
-    self.bigKey.textColor = configure.color.keyTextColor
-    self.mainKeyLabel.textColor = configure.color.keyTextColor
-    self.subKeyLabel.textColor = configure.color.keyTextColor
+    self.contentView.backgroundColor = configure.color.defaultKey
+    self.bigKey.textColor = configure.color.defaultKeyTextColor
+    self.mainKeyLabel.textColor = configure.color.defaultKeyTextColor
+    self.subKeyLabel.textColor = configure.color.defaultKeyTextColor
   }
   
 }
@@ -82,7 +82,7 @@ extension IKCryptoButton {
 extension IKCryptoButton {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.isTouch = true
-    self.contentView.backgroundColor = configure.color.touchedButton
+    self.contentView.backgroundColor = configure.color.touchedKey
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -92,14 +92,14 @@ extension IKCryptoButton {
     
     if self.isTouch {
       self.isTouch = false
-      self.contentView.backgroundColor = configure.color.defaultButton
+      self.contentView.backgroundColor = configure.color.defaultKey
     }
   }
   
   override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
     if self.isTouch {
       self.isTouch = false;
-      self.contentView.backgroundColor = configure.color.defaultButton
+      self.contentView.backgroundColor = configure.color.defaultKey
     }
   }
   
