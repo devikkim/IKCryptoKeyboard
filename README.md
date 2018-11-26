@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/IKCryptoKeyboard.svg?style=flat)](https://cocoapods.org/pods/IKCryptoKeyboard)
 
 ## Demo
-### English/Korea Keyboard
+### English/Korean Keyboard
 <img src="/Screenshots/IKCryptoKeyboard.gif" />
 
 ## Example
@@ -17,6 +17,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 - Swift 4.0
 - ios 9.3
+
+## Dependecy
+- [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)
 
 ## Installation
 
@@ -61,9 +64,9 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
 
 ## Customize
 
-### Description ( The Rules )
+### The Rules.
 
-If you keep the rules, you can use all of the language keyboard. 
+If you keep the rules, you can use all of the languages keyboard. 
 
 <img src="/Screenshots/IKCryptoKeyboard_Description.png" />
 
@@ -163,7 +166,6 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
   
   // for debug
   func doDecrypt(encrypted: Array<UInt8>) -> Array<UInt8> {
-  
     // describe decrypt function
   }
 }
