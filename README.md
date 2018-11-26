@@ -155,7 +155,8 @@ public struct IKCryptoKeyBoardConfigure {
 
 ```
 
-### Deutsch Crypto Keyboard
+### Custom Example
+- Deutsch Crypto Keyboard
 ``` swift
 configure.isUseSubKeys = false
     
@@ -176,8 +177,8 @@ configure.color.defaultKeyTextColor = .black
 configure.color.functionKey = .red
 ```
 <img src="/Screenshots/Deutsch.png" />
-
-### Ressian Crypto Keyboard
+ 
+- Ressian Crypto Keyboard
 ``` swift
 configure.isUseSubKeys = false
 configure.informationText = "This is Ressian Crypto Keyboard"
