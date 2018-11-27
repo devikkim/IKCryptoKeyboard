@@ -158,7 +158,6 @@ public struct IKCryptoKeyBoardConfigure {
 - Deutsch Crypto Keyboard
 ``` swift
 configure.isUseSubKeys = false
-    
 configure.informationText = "This is Deutsch Crypto Keyboard"
 configure.mainQwerty.firstLine = "qwertzuiopü"
 configure.mainQwerty.secondLine = "asdfghjklöä"
@@ -168,13 +167,13 @@ configure.shiftMainQwerty.firstLine = "QWERTZUIOPÜ"
 configure.shiftMainQwerty.secondLine = "ASDFGHJKLÖÄ"
 configure.shiftMainQwerty.thirdLine = "YXCVBNM"
 
-configure.color.defaultKeyBackground = .yellow
+configure.color.defaultKeyBackground = UIColor(red:0.83, green:0.72, blue:0.21, alpha:1.0)
 configure.color.touchedKeyBackground = .gray
-configure.color.functionKeyBackground = .red
-configure.color.keyboardBackground = .black
-configure.color.functionKeyText = .white
-configure.color.defaultKeyTextBackground = .black
-
+configure.color.functionKeyBackground = UIColor(red:0.70, green:0.08, blue:0.08, alpha:1.0)
+configure.color.keyboardBackground = UIColor(red:0.17, green:0.14, blue:0.14, alpha:1.0)
+configure.color.functionKeyText = .black
+configure.color.defaultKeyText = .black
+configure.color.background = .white
 ```
 <img src="/Screenshots/Deutsch.png" />
  
@@ -185,18 +184,18 @@ configure.informationText = "This is Ressian Crypto Keyboard"
 configure.mainQwerty.firstLine = "йцукенгшщзх"
 configure.mainQwerty.secondLine = "фывапролджэ"
 configure.mainQwerty.thirdLine = "ячсмитьбю"
-
+    
 configure.shiftMainQwerty.firstLine = "ЙЦУКЕНГШЩЗХ"
 configure.shiftMainQwerty.secondLine = "ФЫВАПРОЛДЖЭ"
 configure.shiftMainQwerty.thirdLine = "ЯЧСМИТЬБЮ"
-
-configure.color.defaultKeyBackground = .white
+    
+configure.color.defaultKeyBackground = UIColor(red:0.13, green:0.33, blue:0.99, alpha:1.0)
 configure.color.touchedKeyBackground = .gray
-configure.color.functionKeyBackground = .red
-configure.color.keyboardBackground = .blue
-configure.color.functionKeyText = .black
-configure.color.defaultKeyText = .black
-
+configure.color.keyboardBackground = UIColor(red:0.99, green:0.99, blue:0.99, alpha:1.0)
+configure.color.functionKeyBackground = UIColor(red:0.83, green:0.27, blue:0.27, alpha:1.0)
+configure.color.functionKeyText = .white
+configure.color.defaultKeyText = .white
+configure.color.background = .white
 ```
 <img src="/Screenshots/Ressian.png" />
 
