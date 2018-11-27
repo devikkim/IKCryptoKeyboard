@@ -68,6 +68,7 @@
 		679734C41730EDF9BE7E81FF985C2C2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38661A7AE510A3ADD47D89F7C87BB4C /* Foundation.framework */; };
 		6B71ACB6D56B970D0B2AD8EE2B79D96F /* FBSnapshotTestCasePlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7A06350398B4E8F0F4C8FC8D349A8 /* FBSnapshotTestCasePlatform.m */; };
 		6EC17B6986CC7F9EBDF0521AE86F371B /* FBSnapshotTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AB643AFC35AFFD6BD82AF7E34ACD97DD /* FBSnapshotTestCase.m */; };
+		705B6A5B21ACFCF700D1ED6E /* IKUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705B6A5A21ACFCF700D1ED6E /* IKUtilities.swift */; };
 		72541048B150E29F22A0CBD388ED2ABD /* HMAC+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB77A3B15DD6ED8EBB99958050AFC81 /* HMAC+Foundation.swift */; };
 		73247510D7AD93E5FDBA474B353BF919 /* UIImage+Diff.h in Headers */ = {isa = PBXBuildFile; fileRef = 24F15E0678E2391AF92AB8E0FF42954B /* UIImage+Diff.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		73C902059F8AF43AACD227E0EA837717 /* IKCryptoKeyBoardViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = B9362EA342C279B69CD0A832ABB659C2 /* IKCryptoKeyBoardViewController.xib */; };
@@ -237,6 +238,7 @@
 		6DB0E71F189AD8E88852A5043F41F720 /* Cipher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cipher.swift; path = Sources/CryptoSwift/Cipher.swift; sourceTree = "<group>"; };
 		6DE36905DBC1590551FBEB2D5130446D /* CTR.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CTR.swift; path = Sources/CryptoSwift/BlockMode/CTR.swift; sourceTree = "<group>"; };
 		6E104018DBFE41E61A00770A328DE679 /* Pods-IKCryptoKeyboard_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IKCryptoKeyboard_Tests-resources.sh"; sourceTree = "<group>"; };
+		705B6A5A21ACFCF700D1ED6E /* IKUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IKUtilities.swift; path = IKCryptoKeyboard/Classes/IKUtilities.swift; sourceTree = "<group>"; };
 		716D44F6CDD9C749D2541CBCCCC5698A /* CCM.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CCM.swift; path = Sources/CryptoSwift/BlockMode/CCM.swift; sourceTree = "<group>"; };
 		72741DBBC819410C1BFE9EF1019E702B /* AES+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "AES+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/AES+Foundation.swift"; sourceTree = "<group>"; };
 		7480A98D28ECEEBD18664814F31EC43F /* Cryptors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cryptors.swift; path = Sources/CryptoSwift/Cryptors.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 				182B9139357288691475E02CC23EFEF2 /* IKKeyboardTypes.swift */,
 				F5EF93A302C2A17EB73419C10ECDE6A7 /* IKKeys.swift */,
 				C12558963532B96F32A69F7F48033EF1 /* IKKeySet.swift */,
+				705B6A5A21ACFCF700D1ED6E /* IKUtilities.swift */,
 				C51D83952CB844AB1A4223275094766C /* Pod */,
 				D32D9D8A65223167B977EA11841A02A1 /* Support Files */,
 			);
@@ -922,6 +925,7 @@
 				A125BB76E9EAB493DAA1C7DADA92B045 /* IKCryptoKeyBoardViewController.swift in Sources */,
 				73C902059F8AF43AACD227E0EA837717 /* IKCryptoKeyBoardViewController.xib in Sources */,
 				E23617547C7C0F332CBDA3109C997EE5 /* IKKeyboardInformation.swift in Sources */,
+				705B6A5B21ACFCF700D1ED6E /* IKUtilities.swift in Sources */,
 				4ECCBE034E4DC9AA2904171CDF2B6558 /* IKKeyboardTypes.swift in Sources */,
 				BD7050F58F66EEF3F8394E3E4479CCF7 /* IKKeys.swift in Sources */,
 				4EEC13275B28152D2D29278AEDED4CA2 /* IKKeySet.swift in Sources */,

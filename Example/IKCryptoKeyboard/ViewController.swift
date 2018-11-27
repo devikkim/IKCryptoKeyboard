@@ -12,12 +12,14 @@ import IKCryptoKeyboard
 class ViewController: UIViewController, UITextFieldDelegate{
   
   @IBOutlet fileprivate weak var pwTextField: UITextField!
-  @IBOutlet fileprivate weak var encryptedTextField: UITextField!
-  @IBOutlet fileprivate weak var decryptedTextField: UITextField!
+  @IBOutlet fileprivate weak var encryptedView: UITextView!
+  @IBOutlet fileprivate weak var decryptedView: UITextView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     pwTextField.delegate = self
+//    encryptedTextView.text = ""
+//    decryptedTextView.text = ""
     // Do any additional setup after loading the view, typically from a nib.
   }
   
@@ -31,8 +33,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     let vc = IKCryptoKeyBoardViewController()
     vc.delegate = self
-
-    var configure = IKCryptoKeyBoardConfigure()
     
     self.present(vc, animated: true)
   }
@@ -42,14 +42,14 @@ class ViewController: UIViewController, UITextFieldDelegate{
 extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
   func didEncrypted(plain: String, encryptedData: Array<UInt8>) {
     self.pwTextField.text = plain
-    self.encryptedTextField.text = encryptedData.toBase64()!
+    encryptedView.text = encryptedData.toBase64()!
   }
   
   func didDecrypted(decryptedData: Array<UInt8>) {
     if let decrypted = String(bytes: decryptedData, encoding: .utf8){
-      self.decryptedTextField.text = decrypted
+      decryptedView.text = decrypted
     } else {
-      self.decryptedTextField.text = decryptedData.toHexString()
+      decryptedView.text = decryptedData.toHexString()
     }
   }
 }

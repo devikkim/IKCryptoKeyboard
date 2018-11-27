@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +17,7 @@
                 <outlet property="navigationBar" destination="acE-u9-0Kg" id="n8v-8C-T80"/>
                 <outlet property="passwordTextField" destination="tcZ-0p-bGR" id="fLk-De-7zS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewInputButton" destination="yiq-2D-f4o" id="Qr9-WO-WP0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -49,11 +50,24 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiq-2D-f4o">
+                    <rect key="frame" x="100" y="405.5" width="214" height="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="View Input">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="viewPasswordButtonActionWithSender:" destination="-1" eventType="touchUpInside" id="ffb-Qz-Fo2"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="acE-u9-0Kg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="15p-eC-P4k"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yiq-2D-f4o" secondAttribute="trailing" constant="100" id="73B-JI-mxq"/>
                 <constraint firstItem="acE-u9-0Kg" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="9XH-Ak-UIu"/>
+                <constraint firstItem="yiq-2D-f4o" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="B7x-Dh-oCh"/>
+                <constraint firstItem="yiq-2D-f4o" firstAttribute="top" secondItem="tcZ-0p-bGR" secondAttribute="bottom" multiplier="1:0.95" constant="8" symbolic="YES" id="COK-wT-F1v"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TRC-uU-ByM" secondAttribute="trailing" constant="20" id="DOq-re-Zja"/>
                 <constraint firstItem="tcZ-0p-bGR" firstAttribute="top" secondItem="TRC-uU-ByM" secondAttribute="bottom" multiplier="1:0.85" id="Hwk-Hr-E4n"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tcZ-0p-bGR" secondAttribute="trailing" constant="65" id="PAq-cN-XdY"/>

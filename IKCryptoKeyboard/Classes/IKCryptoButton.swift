@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 protocol IKCryptoButtonDelegate: class {
   func touchedKey(key:String)
@@ -28,13 +29,13 @@ class IKCryptoButton: UIButton {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    self.initFromNibName()
+    initFromNibName()
   }
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)!
     
-    self.initFromNibName()
+    initFromNibName()
   }
   
   private func initFromNibName(){
@@ -42,16 +43,16 @@ class IKCryptoButton: UIButton {
     let nib = UINib(nibName: name, bundle: Bundle(for: IKCryptoButton.self))
     nib.instantiate(withOwner: self, options: nil)
     
-    self.contentView.layer.cornerRadius = 5.0
-    self.addSubview(self.contentView)
+    contentView.layer.cornerRadius = 5.0
+    addSubview(contentView)
     
-    self.contentView.translatesAutoresizingMaskIntoConstraints = false
+    contentView.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([
-      self.contentView.topAnchor.constraint(equalTo: self.topAnchor),
-      self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-      self.contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-      self.contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      contentView.topAnchor.constraint(equalTo: self.topAnchor),
+      contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+      contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
       ])
   }
 
@@ -67,39 +68,43 @@ extension IKCryptoButton {
       mainKeyLabel.text = keySet.mainKey
       subKeyLabel.text = keySet.subKey
     }
-    self.setColor()
+    
+    setColor()
   }
   
   private func setColor(){
-    self.contentView.backgroundColor = configure.color.defaultKey
-    self.bigKey.textColor = configure.color.defaultKeyTextColor
-    self.mainKeyLabel.textColor = configure.color.defaultKeyTextColor
-    self.subKeyLabel.textColor = configure.color.defaultKeyTextColor
+    contentView.backgroundColor = configure.color.defaultKeyBackground
+    bigKey.textColor = configure.color.defaultKeyText
+    mainKeyLabel.textColor = configure.color.defaultKeyText
+    subKeyLabel.textColor = configure.color.defaultKeyText
   }
   
 }
 
 extension IKCryptoButton {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.isTouch = true
-    self.contentView.backgroundColor = configure.color.touchedKey
+    isTouch = true
+    contentView.backgroundColor = configure.color.touchedKeyBackground
+    
+    // added haptic
+    IKUtilities.OccurHaptic()
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    let touchedKey = self.keySet.mainKey
+    let touchedKey = keySet.mainKey
     
     delegate?.touchedKey(key: touchedKey!)
     
-    if self.isTouch {
-      self.isTouch = false
-      self.contentView.backgroundColor = configure.color.defaultKey
+    if isTouch {
+      isTouch = false
+      contentView.backgroundColor = configure.color.defaultKeyBackground
     }
   }
   
   override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-    if self.isTouch {
-      self.isTouch = false;
-      self.contentView.backgroundColor = configure.color.defaultKey
+    if isTouch {
+      isTouch = false;
+      contentView.backgroundColor = configure.color.defaultKeyBackground
     }
   }
   

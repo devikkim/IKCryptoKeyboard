@@ -38,12 +38,12 @@ class IKCryptoKeyboardView: UIView{
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.initFromNibName()
+    initFromNibName()
   }
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)!
-    self.initFromNibName()
+    initFromNibName()
   }
   
   fileprivate func initFromNibName(){
@@ -51,46 +51,47 @@ class IKCryptoKeyboardView: UIView{
     let nib = UINib(nibName: name, bundle: Bundle(for: IKCryptoButton.self))
     nib.instantiate(withOwner: self, options: nil)
     
-    self.addSubview(self.contentView)
+    addSubview(contentView)
     
-    self.contentView.translatesAutoresizingMaskIntoConstraints = false
+    contentView.translatesAutoresizingMaskIntoConstraints = false
+    
     NSLayoutConstraint.activate([
-      self.contentView.topAnchor.constraint(equalTo: self.topAnchor),
-      self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-      self.contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-      self.contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      contentView.topAnchor.constraint(equalTo: self.topAnchor),
+      contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+      contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
       ])
   }
   
   fileprivate func setButtonUI(){
-    self.contentView.backgroundColor = configure.color.keyboardBackground
+    contentView.backgroundColor = configure.color.keyboardBackground
     
-    self.comfirmButton.layer.cornerRadius = 5.0
-    self.comfirmButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
-    self.comfirmButton.backgroundColor = configure.color.functionKey
+    comfirmButton.layer.cornerRadius = 5.0
+    comfirmButton.setTitleColor(configure.color.functionKeyText, for: .normal)
+    comfirmButton.backgroundColor = configure.color.functionKeyBackground
     
-    self.backspaceButton.layer.cornerRadius = 5.0
-    self.backspaceButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
-    self.backspaceButton.backgroundColor = configure.color.functionKey
+    backspaceButton.layer.cornerRadius = 5.0
+    backspaceButton.setTitleColor(configure.color.functionKeyText, for: .normal)
+    backspaceButton.backgroundColor = configure.color.functionKeyBackground
     
-    self.spaceButton.layer.cornerRadius = 5.0
-    self.spaceButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
-    self.spaceButton.backgroundColor = configure.color.functionKey
+    spaceButton.layer.cornerRadius = 5.0
+    spaceButton.setTitleColor(configure.color.functionKeyText, for: .normal)
+    spaceButton.backgroundColor = configure.color.functionKeyBackground
     
-    self.shiftButton.layer.cornerRadius = 5.0
-    self.shiftButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
-    self.shiftButton.backgroundColor = configure.color.functionKey
+    shiftButton.layer.cornerRadius = 5.0
+    shiftButton.setTitleColor(configure.color.functionKeyText, for: .normal)
+    shiftButton.backgroundColor = configure.color.functionKeyBackground
     
-    self.specialButton.layer.cornerRadius = 5.0
-    self.specialButton.setTitleColor(configure.color.functionKeyTextColor, for: .normal)
-    self.specialButton.backgroundColor = configure.color.functionKey
+    specialButton.layer.cornerRadius = 5.0
+    specialButton.setTitleColor(configure.color.functionKeyText, for: .normal)
+    specialButton.backgroundColor = configure.color.functionKeyBackground
   } 
 }
 
 extension IKCryptoKeyboardView: IKCryptoButtonDelegate {
   func touchedKey(key: String) {
-    self.userInputText += key
-    self.delegate?.touched(keys: self.userInputText)
+    userInputText += key
+    delegate?.touched(keys: userInputText)
   }
   
 }
@@ -98,7 +99,7 @@ extension IKCryptoKeyboardView: IKCryptoButtonDelegate {
 extension IKCryptoKeyboardView {
   func setKeys(type: IKKeyboardTypes){
     
-    self.setButtonUI()
+    setButtonUI()
     
     var keyboardInfo = IKKeyboardInformation(configure: configure)
     
@@ -111,87 +112,96 @@ extension IKCryptoKeyboardView {
       keyboardInfo.setKeyFrom(type: .special)
     }
     
-    for view in self.numberKeysView.subviews {
+    for view in numberKeysView.subviews {
       view.removeFromSuperview()
     }
-    for view in self.firstKeysView.subviews {
+    for view in firstKeysView.subviews {
       view.removeFromSuperview()
     }
-    for view in self.secondKeysView.subviews {
+    for view in secondKeysView.subviews {
       view.removeFromSuperview()
     }
-    for view in self.thirdKeysView.subviews {
+    for view in thirdKeysView.subviews {
       view.removeFromSuperview()
     }
     
     for button in keyboardInfo.numberKeyArray {
       button.delegate = self
-      self.numberKeysView.addArrangedSubview(button)
+      numberKeysView.addArrangedSubview(button)
     }
     
     for button in keyboardInfo.firstKeyArray {
       button.delegate = self
-      self.firstKeysView.addArrangedSubview(button)
+      firstKeysView.addArrangedSubview(button)
     }
     
     for button in keyboardInfo.secondKeyArray {
       button.delegate = self
-      self.secondKeysView.addArrangedSubview(button)
+      secondKeysView.addArrangedSubview(button)
     }
     
     for button in keyboardInfo.thirdKeyArray {
       button.delegate = self
-      self.thirdKeysView.addArrangedSubview(button)
+      thirdKeysView.addArrangedSubview(button)
     }
   }
 }
 
 extension IKCryptoKeyboardView {
   @IBAction func shiftTouch(sender:UIButton){
-    if self.isShift {
-      self.setKeys(type: IKKeyboardTypes.main)
-      self.isShift = false
+    IKUtilities.OccurHaptic()
+    
+    if isShift {
+      setKeys(type: IKKeyboardTypes.main)
+      isShift = false
       
-      shiftButton.backgroundColor = configure.color.functionKey
+      shiftButton.backgroundColor = configure.color.functionKeyBackground
     } else {
-      self.setKeys(type: IKKeyboardTypes.shift)
-      self.isShift = true
+      setKeys(type: IKKeyboardTypes.shift)
+      isShift = true
       
-      shiftButton.backgroundColor = configure.color.touchedKey
+      shiftButton.backgroundColor = configure.color.touchedKeyBackground
     }
   }
   
   @IBAction func spacialTouch(sender:UIButton){
-    if self.isSpecial {
-      self.setKeys(type: IKKeyboardTypes.main)
-      self.isSpecial = false
-      specialButton.backgroundColor = configure.color.functionKey
+    IKUtilities.OccurHaptic()
+    
+    if isSpecial {
+      setKeys(type: IKKeyboardTypes.main)
+      isSpecial = false
+      specialButton.backgroundColor = configure.color.functionKeyBackground
       
-      self.shiftButton.isHidden = false
+      shiftButton.isHidden = false
     } else {
-      self.setKeys(type: IKKeyboardTypes.special)
-      self.isSpecial = true
-      specialButton.backgroundColor = configure.color.touchedKey
+      setKeys(type: IKKeyboardTypes.special)
+      isSpecial = true
+      specialButton.backgroundColor = configure.color.touchedKeyBackground
       
-      self.shiftButton.isHidden = true
+      shiftButton.isHidden = true
     }
   }
   
   @IBAction func spaceTouch(sender:UIButton){
-    self.userInputText += " "
-    self.delegate?.touched(keys: userInputText)
+    IKUtilities.OccurHaptic()
+    
+    userInputText += " "
+    delegate?.touched(keys: userInputText)
   }
   
   @IBAction func backspaceTouch(sender:UIButton){
+    IKUtilities.OccurHaptic()
+    
     if self.userInputText.count != 0 {
       let endIndex = userInputText.index(userInputText.endIndex, offsetBy: -1)
-      self.userInputText = String(userInputText[..<endIndex])
-      self.delegate?.touched(keys: userInputText)
+      userInputText = String(userInputText[..<endIndex])
+      delegate?.touched(keys: userInputText)
     }
   }
   
   @IBAction func comfirmTouch(sender:UIButton){
+    IKUtilities.OccurHaptic()
+    
     delegate?.comfirmTouch(plain: userInputText)
   }
-  
 }

@@ -41,67 +41,63 @@ struct IKKeyboardInformation {
   
   private mutating func setMainKey(keys: IKKeys){
     for num in keys.numberLine {
-      if configure.numberLineBlankPositons.contains(self.numberKeyArray.count){
-        let blankKeySet = IKKeySet()
-        let blankButton = IKCryptoButton()
-        blankButton.configure = configure
-        
-        blankButton.setKeySet(keySet: blankKeySet)
-        self.numberKeyArray.append(blankButton)
+      if configure.numberLineBlankPositons.contains(numberKeyArray.count){
+        let blankButton = makeBlankButton()
+        numberKeyArray.append(blankButton)
       }
       let keySet = IKKeySet(mainKey: num, subKey: "")
       let button = IKCryptoButton()
       button.configure = configure
       button.setKeySet(keySet: keySet)
-      self.numberKeyArray.append(button)
+      numberKeyArray.append(button)
     }
     
     for (main,sub) in keys.firstLine {
-      if configure.firstLineBlankPositons.contains(self.firstKeyArray.count){
-        let blankKeySet = IKKeySet()
-        let blankButton = IKCryptoButton()
-        blankButton.configure = configure
-        
-        blankButton.setKeySet(keySet: blankKeySet)
-        self.firstKeyArray.append(blankButton)
+      if configure.firstLineBlankPositons.contains(firstKeyArray.count){
+        let blankButton = makeBlankButton()
+        firstKeyArray.append(blankButton)
       }
       let keySet = IKKeySet(mainKey: main, subKey: sub)
       let button = IKCryptoButton()
       button.configure = configure
       button.setKeySet(keySet: keySet)
-      self.firstKeyArray.append(button)
+      firstKeyArray.append(button)
     }
     
     for (main,sub) in keys.secondLine {
-      if configure.secondLineBlankPositons.contains(self.secondKeyArray.count){
-        let blankKeySet = IKKeySet()
-        let blankButton = IKCryptoButton()
-        blankButton.configure = configure
-        
-        blankButton.setKeySet(keySet: blankKeySet)
-        self.secondKeyArray.append(blankButton)
+      if configure.secondLineBlankPositons.contains(secondKeyArray.count){
+        let blankButton = makeBlankButton()
+        secondKeyArray.append(blankButton)
       }
       let keySet = IKKeySet(mainKey: main, subKey: sub)
       let button = IKCryptoButton()
       button.configure = configure
       button.setKeySet(keySet: keySet)
-      self.secondKeyArray.append(button)
+      secondKeyArray.append(button)
     }
     
     for (main,sub) in keys.thirdLine {
-      if configure.thirdLineBlankPositons.contains(self.thirdKeyArray.count){
-        let blankKeySet = IKKeySet()
-        let blankButton = IKCryptoButton()
-        blankButton.configure = configure
-        
-        blankButton.setKeySet(keySet: blankKeySet)
-        self.thirdKeyArray.append(blankButton)
+      if configure.thirdLineBlankPositons.contains(thirdKeyArray.count){
+        let blankButton = makeBlankButton()
+        thirdKeyArray.append(blankButton)
       }
       let keySet = IKKeySet(mainKey: main, subKey: sub)
       let button = IKCryptoButton()
       button.configure = configure
       button.setKeySet(keySet: keySet)
-      self.thirdKeyArray.append(button)
+      thirdKeyArray.append(button)
     }
   }
+  
+  private mutating func makeBlankButton() -> IKCryptoButton {
+    let blankKeySet = IKKeySet()
+    let blankButton = IKCryptoButton()
+    blankButton.configure = configure
+    blankButton.isEnabled = false
+    blankButton.setKeySet(keySet: blankKeySet)
+    blankButton.contentView.backgroundColor = configure.color.keyboardBackground
+    
+    return blankButton
+  }
+  
 }

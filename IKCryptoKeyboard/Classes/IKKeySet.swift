@@ -17,7 +17,7 @@ struct IKKeySet {
   }
   
   init(){
-    self.mainKey = ""
-    self.subKey = ""
+    mainKey = ""
+    subKey = ""
   }
 }

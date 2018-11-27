@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IKCryptoKeyboard'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'this is crypto keyboard view controller.'
   
   s.dependency 'CryptoSwift'

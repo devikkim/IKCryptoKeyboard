@@ -11,14 +11,15 @@ import CryptoSwift
 public struct IKCryptoKeyBoardConfigure {
   
   public struct Color {
-    public var touchedKey = UIColor(red:0.20, green:0.39, blue:0.73, alpha:1.0)
-    public var defaultKey = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
-    public var functionKey = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    public var touchedKeyBackground = UIColor(red:0.20, green:0.39, blue:0.73, alpha:1.0)
+    public var defaultKeyBackground = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    public var functionKeyBackground = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
     public var keyboardBackground = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
     
-    public var functionKeyTextColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
-    public var defaultKeyTextColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
+    public var functionKeyText = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
+    public var defaultKeyText = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
     
+    public var background = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
     public init () {
       
     }
@@ -34,7 +35,6 @@ public struct IKCryptoKeyBoardConfigure {
       self.secondLine = secondLine
       self.thirdLine = thirdLine
     }
-    
   }
   
   public enum IKCipherTypes {
@@ -89,8 +89,6 @@ public struct IKCryptoKeyBoardConfigure {
   public var secondLineBlankPositons = [Int]()
   public var thirdLineBlankPositons = [Int]()
   
-  
-  
   public init(){
     
   }
@@ -136,6 +134,8 @@ public class IKCryptoKeyBoardViewController: UIViewController {
   
   @IBOutlet fileprivate weak var informationLabel: UILabel!
   
+  @IBOutlet fileprivate weak var viewInputButton: UIButton!
+  
   public var configure = IKCryptoKeyBoardConfigure()
   
   public var delegate: IKCryptoKeyBoardViewControllerDelegate?
@@ -153,20 +153,20 @@ public class IKCryptoKeyBoardViewController: UIViewController {
   override open func viewDidLoad() {
     super.viewDidLoad()
     
-    self.navigationBar.topItem?.title = self.configure.titleName
-    self.cancelButton = UIBarButtonItem(title: self.configure.cancelButtonName,
+    navigationBar.topItem?.title = configure.titleName
+    cancelButton = UIBarButtonItem(title: configure.cancelButtonName,
                                         style: .plain,
                                         target: self,
                                         action: #selector(cancelAction))
     
-    self.navigationBar.topItem?.leftBarButtonItem = self.cancelButton
-    
+    navigationBar.topItem?.leftBarButtonItem = self.cancelButton
+    view.backgroundColor = configure.color.background
     setCryptoKeyboard()
-    self.informationLabel.text = configure.informationText
+    informationLabel.text = configure.informationText
   }
   
   @objc func cancelAction () {
-    self.dismiss(animated: true)
+    dismiss(animated: true)
   }
   
   private func setCryptoKeyboard() {
@@ -191,7 +191,7 @@ public class IKCryptoKeyBoardViewController: UIViewController {
     while(array.count != 2){
       let random = Int.random(in: 0..<limit)
       
-      if !array.contains(random) {
+      if !array.contains(random) && !array.contains(random - 1) && !array.contains(random + 1){
         array.append(random)
       }
     }
@@ -199,6 +199,15 @@ public class IKCryptoKeyBoardViewController: UIViewController {
     return array
   }
   
+  @IBAction func viewPasswordButtonAction(sender: UIButton){
+    if passwordTextField.isSecureTextEntry {
+      passwordTextField.isSecureTextEntry = false
+      viewInputButton.isSelected = true
+    } else {
+      passwordTextField.isSecureTextEntry = true
+      viewInputButton.isSelected = false
+    }
+  }
 }
 
 extension IKCryptoKeyBoardViewController: UITextFieldDelegate {
@@ -209,7 +218,7 @@ extension IKCryptoKeyBoardViewController: UITextFieldDelegate {
 
 extension IKCryptoKeyBoardViewController: IKCryptoKeyboardViewDelegate {
   func touched(keys:String) {
-    self.passwordTextField.text = keys
+    passwordTextField.text = keys
   }
   
   func comfirmTouch(plain: String) {
@@ -221,24 +230,24 @@ extension IKCryptoKeyBoardViewController: IKCryptoKeyboardViewDelegate {
         
         let replacePlain = plain.map{ _ in "a" }.joined()
         
-        self.delegate?.didEncrypted(plain: replacePlain, encryptedData: encrypted)
+        delegate?.didEncrypted(plain: replacePlain, encryptedData: encrypted)
         
         let decrypted = try AES(key: configure.cipher.key, blockMode: CBC(iv: configure.cipher.key), padding: .pkcs7).decrypt(encrypted)
-        self.delegate?.didDecrypted(decryptedData: decrypted)
+        delegate?.didDecrypted(decryptedData: decrypted)
         
-        self.dismiss(animated: true)
+        dismiss(animated: true)
 
       case .custom:
         if let encrypted = self.delegate?.doEncrypt(plain: plain){
           let replacePlain = plain.map{ _ in "a" }.joined()
           
-          self.delegate?.didEncrypted(plain: replacePlain, encryptedData: encrypted)
+          delegate?.didEncrypted(plain: replacePlain, encryptedData: encrypted)
           
           if let decrypted = self.delegate?.doDecrypt(encrypted: encrypted) {
-            self.delegate?.didDecrypted(decryptedData: decrypted)
+            delegate?.didDecrypted(decryptedData: decrypted)
           }
           
-          self.dismiss(animated: true)
+          dismiss(animated: true)
         }
       }
       
