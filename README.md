@@ -7,7 +7,7 @@
 
 ## Demo
 ### English/Korean Keyboard
-<img src="/Screenshots/IKCryptoKeyboard.gif" />
+<img src="/Screenshots/show_me_the_money.gif" />
 
 ## Example
 
@@ -81,14 +81,15 @@ vc.configure = configure
 public struct IKCryptoKeyBoardConfigure {
   
   public struct Color {
-    public var touchedKey = UIColor(red:0.20, green:0.39, blue:0.73, alpha:1.0)
-    public var defaultKey = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
-    public var functionKey = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    public var touchedKeyBackground = UIColor(red:0.20, green:0.39, blue:0.73, alpha:1.0)
+    public var defaultKeyBackground = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
+    public var functionKeyBackground = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
     public var keyboardBackground = UIColor(red:0.00, green:0.19, blue:0.53, alpha:1.0)
     
-    public var functionKeyTextColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
-    public var defaultKeyTextColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
+    public var functionKeyText = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
+    public var defaultKeyText = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
     
+    public var background = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
     public init () {
       
     }
@@ -104,7 +105,6 @@ public struct IKCryptoKeyBoardConfigure {
       self.secondLine = secondLine
       self.thirdLine = thirdLine
     }
-    
   }
   
   public enum IKCipherTypes {
@@ -147,7 +147,6 @@ public struct IKCryptoKeyBoardConfigure {
                                      thirdLine: "ㅋㅌㅊㅍㅠㅜㅡ")
 
   ...
-  
   public init(){
     
   }
@@ -169,12 +168,13 @@ configure.shiftMainQwerty.firstLine = "QWERTZUIOPÜ"
 configure.shiftMainQwerty.secondLine = "ASDFGHJKLÖÄ"
 configure.shiftMainQwerty.thirdLine = "YXCVBNM"
 
-configure.color.defaultKey = .yellow
-configure.color.touchedKey = .gray
+configure.color.defaultKeyBackground = .yellow
+configure.color.touchedKeyBackground = .gray
+configure.color.functionKeyBackground = .red
 configure.color.keyboardBackground = .black
-configure.color.functionKeyTextColor = .white
-configure.color.defaultKeyTextColor = .black
-configure.color.functionKey = .red
+configure.color.functionKeyText = .white
+configure.color.defaultKeyTextBackground = .black
+
 ```
 <img src="/Screenshots/Deutsch.png" />
  
@@ -190,12 +190,13 @@ configure.shiftMainQwerty.firstLine = "ЙЦУКЕНГШЩЗХ"
 configure.shiftMainQwerty.secondLine = "ФЫВАПРОЛДЖЭ"
 configure.shiftMainQwerty.thirdLine = "ЯЧСМИТЬБЮ"
 
-configure.color.defaultKey = .white
-configure.color.touchedKey = .gray
+configure.color.defaultKeyBackground = .white
+configure.color.touchedKeyBackground = .gray
+configure.color.functionKeyBackground = .red
 configure.color.keyboardBackground = .blue
-configure.color.functionKeyTextColor = .black
-configure.color.defaultKeyTextColor = .black
-configure.color.functionKey = .red
+configure.color.functionKeyText = .black
+configure.color.defaultKeyText = .black
+
 ```
 <img src="/Screenshots/Ressian.png" />
 
