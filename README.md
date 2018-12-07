@@ -224,7 +224,7 @@ extension ViewController: IKCryptoKeyBoardViewControllerDelegate {
 
 ## Author
 
-leibniz55, leibniz55@naver.com
+devikkim, devikkim@gmail.com
 
 ## License
 
