@@ -1,21 +1,14 @@
 PODS:
   - CryptoSwift (0.13.0)
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
-  - IKCryptoKeyboard (0.2.0):
+  - IKCryptoKeyboard (1.0.3):
     - CryptoSwift
 
 DEPENDENCIES:
-  - FBSnapshotTestCase (~> 2.1.4)
   - IKCryptoKeyboard (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CryptoSwift
-    - FBSnapshotTestCase
 
 EXTERNAL SOURCES:
   IKCryptoKeyboard:
@@ -23,9 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CryptoSwift: 16e78bebf567bad1c87b2d58f6547f25b74c31aa
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  IKCryptoKeyboard: a77a1f9da4b1f7fffd87267d9ff6afb11757a2b1
+  IKCryptoKeyboard: c7812a0f0156d24b37720561de4414eb4a5b6fb3
 
-PODFILE CHECKSUM: d7e7b0c768e40a56e231cd604b3835367b3b7dd4
+PODFILE CHECKSUM: 9a618daeb1d84d953b82c007862cfb039bd2863c
 
 COCOAPODS: 1.5.3

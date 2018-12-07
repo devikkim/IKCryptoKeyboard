@@ -1,6 +1,6 @@
 {
   "name": "IKCryptoKeyboard",
-  "version": "0.2.0",
+  "version": "1.0.3",
   "summary": "this is crypto keyboard view controller.",
   "dependencies": {
     "CryptoSwift": [
@@ -18,7 +18,7 @@
   },
   "source": {
     "git": "https://github.com/leibniz55/IKCryptoKeyboard.git",
-    "tag": "0.2.0"
+    "tag": "1.0.3"
   },
   "platforms": {
     "ios": "9.0"
